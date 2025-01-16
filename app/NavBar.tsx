@@ -1,10 +1,9 @@
 "use client";
 
+import { cn } from "@/utils/tailwindUtils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
 import { AiFillBug } from "react-icons/ai";
-import { cn } from "@/utils/tailwindUtils";
 
 const NavBar = () => {
   const currentPath = usePathname();
