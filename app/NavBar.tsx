@@ -13,6 +13,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiFillBug } from "react-icons/ai";
+import { Skeleton } from "./components";
 
 const NavBar = () => {
   const currentPath = usePathname();
@@ -52,7 +53,9 @@ const NavBar = () => {
             </Flex>
           </Box>
           <Box>
-            {status === "loading" && <div>Loading...</div>}
+            {status === "loading" && (
+              <Skeleton width="2rem" height="2rem" circle />
+            )}
             {status === "authenticated" && (
               <DropdownMenu.Root>
                 <DropdownMenu.Trigger>
@@ -62,6 +65,7 @@ const NavBar = () => {
                     fallback="?"
                     size="2"
                     radius="full"
+                    referrerPolicy="no-referrer"
                   />
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Content>
