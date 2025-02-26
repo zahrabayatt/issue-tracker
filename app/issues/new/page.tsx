@@ -1,5 +1,6 @@
 "use client";
 
+import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import IssueFormSkeleton from "../_components/IssueFormSkeleton";
 
@@ -13,3 +14,16 @@ const CreateIssuePage = () => {
 };
 
 export default CreateIssuePage;
+
+export const metadata: Metadata = {
+  title: "Issue Tracker - Create New Issue",
+  description: "Create an issue",
+  openGraph: {
+    title: "Issue Tracker - Create New Issue",
+    description: "Create an issue",
+  },
+  twitter: {
+    title: "Issue Tracker - Create New Issue",
+    description: "Create an issue",
+  },
+};
