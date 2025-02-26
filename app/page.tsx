@@ -1,17 +1,5 @@
-import Pagination from "./components/Pagination";
+import LatestIssues from "./LatestIssues";
 
-interface Props {
-  searchParams: Promise<{ page: string }>;
-}
-
-export default async function Home(params: Props) {
-  const searchParams = await params.searchParams;
-
-  return (
-    <Pagination
-      itemCount={100}
-      pageSize={10}
-      currentPage={parseInt(searchParams.page)}
-    />
-  );
+export default async function Home() {
+  return <LatestIssues />;
 }
