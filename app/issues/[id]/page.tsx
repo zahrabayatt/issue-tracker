@@ -43,3 +43,23 @@ const IssueDetailPage = async (props: Props) => {
 };
 
 export default IssueDetailPage;
+
+export async function generateMetadata({ params }: Props) {
+  const { id } = await params;
+  const issue = await prisma.issue.findUnique({ where: { id: parseInt(id) } });
+
+  return {
+    title: issue?.title,
+    description: "Details of issue" + issue?.id,
+    openGraph: {
+      title: issue?.title,
+      description: "Details of issue " + issue?.id,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: issue?.title,
+      description: "Details of issue " + issue?.id,
+    },
+  };
+}
