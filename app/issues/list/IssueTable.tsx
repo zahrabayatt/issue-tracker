@@ -1,4 +1,5 @@
 import { IssueStatusBadge } from "@/app/components";
+import IssueEmptyState from "@/app/components/IssueEmptyState";
 import { Issue, Status } from "@prisma/client";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
 import { Table } from "@radix-ui/themes";
@@ -16,6 +17,8 @@ export interface IssueQuery {
 }
 
 const IssueTable = ({ searchParams, issues }: Props) => {
+  if (issues.length === 0) return <IssueEmptyState />;
+
   return (
     <Table.Root variant="surface">
       <Table.Header>
@@ -40,6 +43,13 @@ const IssueTable = ({ searchParams, issues }: Props) => {
         </Table.Row>
       </Table.Header>
       <Table.Body>
+        {issues.length === 0 && (
+          <Table.Row>
+            <Table.Cell colSpan={3}>
+              <IssueEmptyState />
+            </Table.Cell>
+          </Table.Row>
+        )}
         {issues.map((issue) => (
           <Table.Row key={issue.id}>
             <Table.Cell>
